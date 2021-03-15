@@ -31,16 +31,25 @@ public class Staff {
         staffList[5] = new Volunteer ("Cliff", "321 Duds Lane",
         "555-7282");
         
-        staffList[6] = new Employee ("Meta", "123 Empat Lima",
-        "555-1234", "111-22-333", 6.25);
+        staffList[6] = new Commission ("Meta", "123 Empat Lima",
+        "555-1234", "111-22-333", 6.25, .2);
         
-        staffList[7] = new Employee ("Arda", "543 Dua Tiga",
-        "555-4333", "121-11-222", 9.75);
+        staffList[7] = new Commission ("Arda", "543 Dua Tiga",
+        "555-4333", "121-11-222", 9.75, .15);
         
         ((Executive)staffList[0]).awardBonus (500.00);
         
         ((Hourly)staffList[3]).addHours (40);
+        
+        ((Commission)staffList[6]).addHours (35);
+        
+        ((Commission)staffList[7]).addHours (40);
+        
+        ((Commission)staffList[6]).addSales (400);
+        
+        ((Commission)staffList[7]).addSales (950);
     }
+    
     //-----------------------------------------------------------------
     // Pays all staff members.
     //-----------------------------------------------------------------
