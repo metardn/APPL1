@@ -14,7 +14,6 @@ public class CirclePanel extends JPanel {
     private final int CIRCLE_SIZE = 50;
     private int x,y;
     private Color c;
-    private JPanel color;
     //---------------------------------------------------------------
     // Set up circle and buttons to move it.
     //---------------------------------------------------------------
@@ -127,6 +126,7 @@ public class CirclePanel extends JPanel {
     //---------------------------------------------------------------
     private class ColorListener implements ActionListener {
         Color clr;
+        JPanel color;
         
         //---------------------------------------------------------------
         // Parameters tell what the color.
