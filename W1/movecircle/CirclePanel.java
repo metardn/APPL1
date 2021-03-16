@@ -69,7 +69,7 @@ public class CirclePanel extends JPanel {
         // Add listeners to the buttons
         red.addActionListener(new ColorListener(Color.red));
         cyan.addActionListener(new ColorListener(Color.cyan));
-        choose.addActionListener(new ColorListener(Color.white));
+        choose.addActionListener(new ColorListener(null));
         yellow.addActionListener(new ColorListener(Color.yellow));
         magenta.addActionListener(new ColorListener(Color.magenta));
         
@@ -139,8 +139,8 @@ public class CirclePanel extends JPanel {
         // Change circle color.
         //---------------------------------------------------------------
         public void actionPerformed(ActionEvent e) {
-            if(clr == Color.white)
-                c = JColorChooser.showDialog(color, "Choose Color", Color.white);
+            if(clr == null)
+                c = JColorChooser.showDialog(color, "Choose Color", null);
             else 
                 c = clr;
             repaint();
