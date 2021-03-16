@@ -44,16 +44,22 @@ public class Salesperson implements Comparable {
         int result = 0;
 	Salesperson salesperson = (Salesperson)other;
 
-        if (getSales() < salesperson.getSales()) result = 1;
-        else if (getSales() > salesperson.getSales()) result = -1;
+        if (getSales() < salesperson.getSales()) 
+		result = 1;
+        else if (getSales() > salesperson.getSales()) 
+		result = -1;
         
         //Jika sama, cek apakah salesperson dari orang yang sama
         if (result == 0) {
-            if (getLastName().compareTo(salesperson.getLastName()) < 0)return 1;
-            else if (getLastName().compareTo(salesperson.getLastName()) > 0)return -1;
+            if (getLastName().compareTo(salesperson.getLastName()) < 0)
+		    return 1;
+            else if (getLastName().compareTo(salesperson.getLastName()) > 0)
+		    return -1;
             else if (getLastName().compareTo(salesperson.getLastName()) == 0){
-                    if (getFirstName().compareTo(salesperson.getFirstName()) > 0)return -1;
-                    else if (getFirstName().compareTo(salesperson.getFirstName()) < 0)return 1;
+                    if (getFirstName().compareTo(salesperson.getFirstName()) < 0)
+			    return 1;
+                    else if (getFirstName().compareTo(salesperson.getFirstName()) > 0)
+			    return -1;
             }
 	}
         
