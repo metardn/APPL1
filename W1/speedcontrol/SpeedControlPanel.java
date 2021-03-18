@@ -13,7 +13,7 @@ import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.event.*;
 
-public class SpeedControlPanel {
+public class SpeedControlPanel extends JPanel{
     private final int WIDTH = 600;
     private final int HEIGHT = 400;
     private final int BALL_SIZE = 50;
@@ -21,6 +21,8 @@ public class SpeedControlPanel {
     private Circle bouncingBall; // the object that moves
     private Timer timer;
     private int moveX, moveY; // increment to move each time
+    private JSlider slider;
+    private JPanel sliderPanel;
     
     // ---------------------------------------------
     // Sets up the panel, including the timer
@@ -35,6 +37,22 @@ public class SpeedControlPanel {
         moveX = moveY = 5;
         
         // Set up a slider object here
+        slider = new JSlider(JSlider.HORIZONTAL, 0, 200, 30);
+        
+        slider.setPaintTicks(true);
+        slider.setPaintLabels(true);
+       
+        slider.setAlignmentX(Component.LEFT_ALIGNMENT);
+        
+        slider.addChangeListener(new SlideListener());
+        
+        sliderPanel = new JPanel();
+        sliderPanel.add(new JLabel("Time Delay"));
+        sliderPanel.add(slider);
+        sliderPanel.setAlignmentX(LEFT_ALIGNMENT);
+        
+        this.add(sliderPanel, "South");
+        
         setPreferredSize (new Dimension (WIDTH, HEIGHT));
         setBackground(Color.black);
         timer.start();
@@ -57,6 +75,7 @@ public class SpeedControlPanel {
         // the position of the bouncing ball
         // ----------------------------------------------------
         public void actionPerformed(ActionEvent action) {
+            int slidePanelHt = sliderPanel.getSize().height;
             bouncingBall.move(moveX, moveY);
             
             // change direction if ball hits a side
@@ -80,7 +99,7 @@ public class SpeedControlPanel {
         // resets the delay on the timer.
         // -------------------------------------------------
         public void stateChanged (ChangeEvent event) {
-            
+            timer.setDelay(slider.getValue());
         }
     }
 }
