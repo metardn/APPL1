@@ -26,8 +26,8 @@ public class CountLetters {
             try{
                 counts[word.charAt(i)-'A']++;
             }
-            catch(ArrayIndexOutOfBoundsException a){
-                System.out.println( "\'"+ word.charAt(i) + "\' is not a letter");
+            catch(ArrayIndexOutOfBoundsException e){
+                System.out.println( "\'"+ word.charAt(i) + "\' is not a letter. Error: " + e);
             }
         }
         
