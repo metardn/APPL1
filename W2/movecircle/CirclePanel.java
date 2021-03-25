@@ -14,6 +14,10 @@ public class CirclePanel extends JPanel{
     private final int CIRCLE_SIZE = 50;
     private int x,y;
     private Color c;
+    private JButton left;
+    private JButton right;
+    private JButton up;
+    private JButton down;
     
     //---------------------------------------------------------------
     // Set up circle and buttons to move it.
@@ -29,10 +33,10 @@ public class CirclePanel extends JPanel{
         this.setLayout(new BorderLayout());
         
         // Create buttons to move the circle
-        JButton left = new JButton("Left");
-        JButton right = new JButton("Right");
-        JButton up = new JButton("Up");
-        JButton down = new JButton("Down");
+        left = new JButton("Left");
+        right = new JButton("Right");
+        up = new JButton("Up");
+        down = new JButton("Down");
         
         // Add listeners to the buttons
         left.addActionListener(new MoveListener(-20,0));
@@ -45,6 +49,13 @@ public class CirclePanel extends JPanel{
         right.setMnemonic('r');
         up.setMnemonic('u');
         down.setMnemonic('d');
+        
+        //Add tooltips to the buttons that indicate what happens 
+        //when the button is pressed, including how far it is moved.
+        left.setToolTipText("move left 20 p");
+        right.setToolTipText("move right 20 px");
+        up.setToolTipText("move up 20 px");
+        down.setToolTipText("move down 20 px");
         
         // Need a panel to put the buttons on or they'll be on
         // top of each other.
@@ -88,6 +99,33 @@ public class CirclePanel extends JPanel{
         public void actionPerformed(ActionEvent e) {
             x += dx;
             y += dy;
+            
+            //When the circle gets all the way to an edge, 
+            //disable the corresponding button.
+            if(x < 0){
+                x = 0;
+                left.setEnabled(false);
+            }
+            else if((x + CIRCLE_SIZE) >= getWidth()){
+                x = getWidth() - CIRCLE_SIZE;
+                right.setEnabled(false);
+            }
+            else{
+                left.setEnabled(true);
+                right.setEnabled(true);
+            }
+            if(y < 0){
+                y = 0;
+                up.setEnabled(false);
+            }
+            else if((y + CIRCLE_SIZE) >= getHeight()){
+                y = getHeight() - CIRCLE_SIZE;
+                down.setEnabled(false);
+            }
+            else{
+                up.setEnabled(true);
+                down.setEnabled(true);
+            }
             repaint();
         }
     }
