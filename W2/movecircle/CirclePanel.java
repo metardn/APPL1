@@ -40,6 +40,12 @@ public class CirclePanel extends JPanel{
         up.addActionListener(new MoveListener(0,-20));
         down.addActionListener(new MoveListener(0,20));
         
+        //Add mnemonics to the buttons
+        left.setMnemonic('l');
+        right.setMnemonic('r');
+        up.setMnemonic('u');
+        down.setMnemonic('d');
+        
         // Need a panel to put the buttons on or they'll be on
         // top of each other.
         JPanel buttonPanel = new JPanel();
