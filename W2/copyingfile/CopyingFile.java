@@ -1,8 +1,8 @@
 // *****************************************************************
 // CopyingFile.java             Author: Meta Arda Nabila
 //
-// 
-// 
+// Program that prompts the user for a filename, then opens a Scanner 
+// to the file and copies it, a line at a time, to the standard output
 // *****************************************************************
 package copyingfile;
 
@@ -17,8 +17,9 @@ public class CopyingFile {
         
         while (keepGoing.equals("y") || keepGoing.equals("Y")) {
             //get file name from user
-            System.out.println("Enter file name: ");
-            String filename = "D:\\Polban\\Semester 4\\Analisis dan Perancangan Perangkat Lunak 1\\Praktek\\Java\\w2\\CopyingFile\\src\\copyingfile\\"+scan.nextLine();
+            System.out.print("Enter file name: ");
+            String filename = "D:\\Polban\\Semester 4\\Analisis dan Perancangan Perangkat Lunak 1\\Praktek\\Java\\w2\\CopyingFile\\src\\copyingfile\\"
+                               +scan.nextLine();
             try{
                 // read file
                 File file = new File(filename);
@@ -29,15 +30,14 @@ public class CopyingFile {
                     String text = fileReader.nextLine();
                     System.out.println(text);
                 }
-                
-                break;
+                keepGoing="n";
             }
             catch(FileNotFoundException e){
                 System.out.println("The current file does not exist");
+                System.out.println("Input another filename!");
+                keepGoing = "y";
+                filename = "";
             }
-            System.out.println("Input another filename? (y/n) ");
-            keepGoing = scan.next();
-            //masih error ketika masuk ke while yg selanjutnya/bukan while yg pertama
         }
     }
     
