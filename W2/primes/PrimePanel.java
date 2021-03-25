@@ -32,12 +32,17 @@ public class PrimePanel extends JPanel{
         
         computeButton.addActionListener(new ButtonListener());
         
+        
+        // Displaying the primes is in a scroll pane
+        JScrollPane scrollpanel = new JScrollPane(primeList);
+        
         // Add the components to the panel
         add (heading);
         add (inputLabel);
         add (number);
         add (computeButton);
         add (primeList);
+        add (scrollpanel);
         
         setPreferredSize (new Dimension (400, 320));
         setBackground (Color.yellow);
