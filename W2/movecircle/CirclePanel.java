@@ -51,37 +51,38 @@ public class CirclePanel extends JPanel{
         // Add the button panel to the bottom of the main panel
         this.add(buttonPanel, "South");
         
-        //---------------------------------------------------------------
-        // Draw circle on CirclePanel
-        //---------------------------------------------------------------
-        public void paintComponent(Graphics page){
-            super.paintComponent(page);
-            page.setColor(c);
-            page.fillOval(x,y,CIRCLE_SIZE,CIRCLE_SIZE);
-        }
+    }
+    //---------------------------------------------------------------
+    // Draw circle on CirclePanel
+    //---------------------------------------------------------------
+    public void paintComponent(Graphics page){
+        super.paintComponent(page);
+        page.setColor(c);
+        page.fillOval(x,y,CIRCLE_SIZE,CIRCLE_SIZE);
+    }
         
-        //---------------------------------------------------------------
-        // Class to listen for button clicks that move circle.
-        //---------------------------------------------------------------
-        private class MoveListener implements ActionListener {
-            private int dx;
-            private int dy;
+    //---------------------------------------------------------------
+    // Class to listen for button clicks that move circle.
+    //---------------------------------------------------------------
+    private class MoveListener implements ActionListener {
+        private int dx;
+        private int dy;
             
-            //---------------------------------------------------------------
-            // Parameters tell how to move circle at click.
-            //---------------------------------------------------------------
-            public MoveListener(int dx, int dy) {
-                this.dx = dx;
-                this.dy = dy;
-            }
+        //---------------------------------------------------------------
+        // Parameters tell how to move circle at click.
+        //---------------------------------------------------------------
+        public MoveListener(int dx, int dy) {
+            this.dx = dx;
+            this.dy = dy;
+        }
             
-            //---------------------------------------------------------------
-            // Change x and y coordinates and repaint.
-            //---------------------------------------------------------------
-            public void actionPerformed(ActionEvent e) {
-                x += dx;
-                y += dy;
-                repaint();
+        //---------------------------------------------------------------
+        // Change x and y coordinates and repaint.
+        //---------------------------------------------------------------
+        public void actionPerformed(ActionEvent e) {
+            x += dx;
+            y += dy;
+            repaint();
         }
     }
 }
