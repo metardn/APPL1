@@ -35,6 +35,7 @@ public class PrimePanel extends JPanel{
         
         // Displaying the primes is in a scroll pane
         JScrollPane scrollpanel = new JScrollPane(primeList);
+        //scrollpanel.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
         
         // Add the components to the panel
         add (heading);
@@ -43,6 +44,7 @@ public class PrimePanel extends JPanel{
         add (computeButton);
         add (primeList);
         add (scrollpanel);
+        primeList.add (scrollpanel);
         
         setPreferredSize (new Dimension (400, 320));
         setBackground (Color.yellow);
