@@ -19,5 +19,4 @@ public class Primes {
         frame.pack();
         frame.setVisible(true);
     }
-    
 }
