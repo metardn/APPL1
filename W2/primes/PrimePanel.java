@@ -14,6 +14,7 @@ public class PrimePanel extends JPanel{
     private JTextField number;
     private JButton computeButton;
     private JTextArea primeList;
+    private JScrollPane scrollpanel;
     
     // ----------------------------------------------------------
     // Sets up a panel with a heading, a labeled text field
@@ -32,19 +33,16 @@ public class PrimePanel extends JPanel{
         
         computeButton.addActionListener(new ButtonListener());
         
-        
         // Displaying the primes is in a scroll pane
-        JScrollPane scrollpanel = new JScrollPane(primeList);
-        //scrollpanel.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+        scrollpanel = new JScrollPane(primeList);
+        scrollpanel.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
         
         // Add the components to the panel
         add (heading);
         add (inputLabel);
         add (number);
         add (computeButton);
-        add (primeList);
         add (scrollpanel);
-        primeList.add (scrollpanel);
         
         setPreferredSize (new Dimension (400, 320));
         setBackground (Color.yellow);
@@ -59,36 +57,41 @@ public class PrimePanel extends JPanel{
         // button is clicked.
         // -----------------------------------------------------------
         public void actionPerformed (ActionEvent event) {
-            String textNum = number.getText();
-            int num = Integer.parseInt (textNum);
-            String ans = "";
-            
-            int count = 0;
-            if (num < 2)
-                ans = "There no primes less than " + num;
-            else {
-                ans = " " + 2;
-                count++;
-                for (int i = 3; i <= num; i += 2) {
-                    boolean foundDivisor = false;
-                    int j = 3;
-                    while (j < i && !foundDivisor) {
-                        if (i % j == 0)
-                            foundDivisor = true;
-                        else
-                            j++;
-                    }
-                    
-                    // Add i to the list if it is prime
-                    if (j == i) {
-                        ans += " " + i;
-                        count++;
-                        if (count % 10 == 0)
-                            ans += "\n";
+            try{
+                String textNum = number.getText();
+                int num = Integer.parseInt (textNum);
+                String ans = "";
+
+                int count = 0;
+                if (num < 2)
+                    ans = "There no primes less than " + num;
+                else {
+                    ans = " " + 2;
+                    count++;
+                    for (int i = 3; i <= num; i += 2) {
+                        boolean foundDivisor = false;
+                        int j = 3;
+                        while (j < i && !foundDivisor) {
+                            if (Math.sqrt(i) % j == 0)
+                                foundDivisor = true;
+                            else
+                                j++;
+                        }
+
+                        // Add i to the list if it is prime
+                        if (j == i) {
+                            ans += " " + i;
+                            count++;
+                            if (count % 10 == 0)
+                                ans += "\n";
+                        }
                     }
                 }
+                primeList.setText (ans);
             }
-            primeList.setText (ans);
+            catch(NumberFormatException e){
+                primeList.setText("The column must contain an integer!");
+            }
         }
     }
 }
