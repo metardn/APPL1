@@ -15,7 +15,7 @@ public class RatePanel extends JPanel{
     private String[] currencyName;
     private JLabel result;
     private JComboBox boxCurname;
-    private JTextField text;
+    private JTextField input;
     // ------------------------------------------------------------
     // Sets up a panel to convert cost from one of 6 currencies
     // into U.S. Dollars. The panel contains a heading, a text
@@ -44,11 +44,13 @@ public class RatePanel extends JPanel{
         boxCurname.setBackground(Color.green);
         
         //add a text field (and label)
-        text = new JTextField("Input the cost");
-        text.setBackground(Color.green);
+        JLabel inputLabel = new JLabel ("Enter the cost: ");
+        input = new JTextField(3);
+        input.setBackground(Color.green);
         
         setBackground(Color.orange);
-        add (text);
+        add (inputLabel);
+        add (input);
         add (boxCurname);
         add (title);
         add (result);
@@ -64,8 +66,8 @@ public class RatePanel extends JPanel{
         // displays the value in U.S. Dollars.
         // --------------------------------------------------
         public void actionPerformed (ActionEvent event) {
-            double cost = Double.parseDouble(text.getText());
-            result.setText (text.getText() + " " +  boxCurname.getSelectedItem() +
+            double cost = Double.parseDouble(input.getText());
+            result.setText (input.getText() + " " +  boxCurname.getSelectedItem() +
                         " = " + (rate[boxCurname.getSelectedIndex()] * cost) + " U.S. Dollars");
         }
     }
